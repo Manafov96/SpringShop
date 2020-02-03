@@ -39,7 +39,7 @@
 	                            <tr th:each="order : ${orders}">
 	                                <td th:text="${order.id}"></td>
 	                                <td th:text="${#dates.format(order.created, 'dd/MMM/yyyy HH:mm')}"></td>
-	                                <td th:text="${#numbers.formatInteger(order.total,3,'COMMA')}"></td>
+	                                <td th:text="${#numbers.formatDecimal(order.total, 0, 'COMMA', 2, 'POINT')}"></td>
 	                                <td>
 	                                    <div class="dropdown">
 	                                        <button class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">
