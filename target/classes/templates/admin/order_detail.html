@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
+<body>
+
+<div id="wrapper">
+
+	<nav th:replace="admin/layout :: sidebar"></nav>
+
+	<div id="page-wrapper">
+	    <div class="row">
+	        <div class="col-sm-12">
+	            <h3 class="page-header">Поръчки</h3>
+	        </div>
+	        <!-- /.col-sm-12 -->
+	    </div>
+	    <!-- /.row -->
+	
+	    <div class="row">
+	        <div class="col-sm-12">
+	            <div class="panel panel-primary">
+	                <div class="panel-heading">
+	                    Информация за поръчка
+	                </div>
+	                <!-- /.panel-heading -->
+	                <div class="panel-body">
+	                    <div>
+	                        <!-- Nav tabs -->
+	                        <ul class="nav nav-tabs">
+	                            <li class="active"><a href="#cart" role="tab" data-toggle="tab">Количка</a></li>
+	                            <li><a href="#detail" data-toggle="tab">Детайли</a></li>
+	                        </ul>
+	
+	                      <!-- Tab panes -->
+	                      <div class="tab-content">
+	                        <div class="tab-pane active" id="cart">
+	                            <table class="table table-bordered table-hover">
+	                                <tr>
+	                                    <th width="60%">Продукти</th>
+	                                    <th width="15%" class="text-center">Цена</th>
+	                                    <th width="10%" class="text-center">Количество</th>
+	                                    <th width="15%" class="text-center">Тотал</th>
+	                                </tr>
+	                                <tr th:each="item : ${order.items}">
+	                                    <td style="text-align:left;">
+	                                        <img th:src="@{/upload/{url}(url=${item.product.image})}" width="50px" height="50px" />
+	                                        <span th:text="${item.product.name}"></span>
+	                                    </td>
+	                                    <td th:inline="text">[[${#numbers.formatDecimal(item.product.price, 0, 'COMMA', 2, 'POINT')}]] </td>
+	                                    <td th:text="${item.quantity}"></td>
+	                                    <td th:inline="text">[[${#numbers.formatDecimal(item.subTotal, 0, 'COMMA', 2, 'POINT')}]] </td>
+	                                </tr>
+	                                <tr>
+	                                    <td colspan="3" style="text-align:right;"><strong>Обща сума</strong></td>
+	                                    <td><strong th:inline="text">[[${#numbers.formatDecimal(order.total, 0, 'COMMA', 2, 'POINT')}]] </strong></td>
+	                                </tr>
+	                            </table>
+	                        </div>
+	                        <div class="tab-pane" id="detail">
+	                            <table class="table table-bordered table-hover">
+	                            	<tr>
+	                                    <td width="30%"><strong>Име</strong></td>
+	                                    <td width="70%" th:text="${order.name}"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td><strong>Телефон</strong></td>
+	                                    <td th:text="${order.phone}"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td><strong>Адрес</strong></td>
+	                                   	<td th:text="${order.address}"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td><strong>Описание</strong></td>
+	                                    <td th:text="${order.note}"></td>
+	                                </tr>
+	                            </table>
+	                        </div>
+	                      </div>
+	
+	                    </div>
+	                </div>
+	                <!-- /.panel-body -->
+	            </div>
+	            <!-- /.panel -->
+	        </div>
+	        <!-- /.col-sm-12 -->
+	    </div>
+	    <!-- /.row -->
+	</div>
+	<!-- /#page-wrapper -->
+
+</div>
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+ $(document).ready(function() {
+     $('#dataTables-example').DataTable({
+         responsive: true
+     });
+ });
+/*]]>*/
+</script>
+
+</body>
+</html>
