@@ -100,7 +100,7 @@ main section#articles {
 .card{
     display: flex;
     flex-direction: column;
-    flex: 0 1 15rem;
+
     margin-bottom: 5%;
     border: 1px solid #CCC;
     border-radius: 0.5em;
@@ -148,11 +148,21 @@ main section#articles {
     flex-grow: 1;           
     padding: 1rem 1.5rem;
     border: solid #CCC;
-    border-width: 1px 0;    
+    border-width: 1px 0;
+
+    position: relative;
 }
 
 .card-content h2 {
     margin-bottom: 0.2em;
+
+    bottom: 0;
+    left: 35%;
+    position: absolute;
+}
+
+.card-content-inner{
+    margin-bottom: 3em;
 }
 
 .card-content-inner p:last-child{
