@@ -40,8 +40,11 @@
         </div>
 
         <div class="panel-body">
+            <ul>
+            <li><a th:href="@{/index}" th:text="Всички"></a></li>
+            </ul>
             <ul th:each="category : ${categories}">
-                <li><a href="" th:text="${category.name}"></a></li>
+                <li><a th:href="@{/index/category/{id}/products(id=${category.id})}" th:text="${category.name}"></a></li>
                 <li style="display: none"><a href=""  th:text="${category.id}"></a></li>
             </ul>
         </div>
