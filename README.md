@@ -1,1 +1,1 @@
-# Online shop Admin control panel example with Java Spring MVC.
+# Online shop example with Java Spring MVC.
