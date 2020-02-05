@@ -17,12 +17,12 @@ public class LoginController {
 	@Autowired
 	private ProductService productService;
 
-	@GetMapping("/login")
+	@GetMapping( "/login" )
 	public String login() {
 		return "web/login";
 	}
 
-	@GetMapping("/index")
+	@GetMapping(value = {"/", "/index"})
 	public String home(Model model) {
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("products", productService.findAll());
@@ -34,6 +34,21 @@ public class LoginController {
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("products", productService.findByCategoryId(id));
 		return "web/index";
+	}
+
+	@GetMapping("/about")
+    public String showAbout(){
+	 return "web/about";
+    }
+
+    @GetMapping("/contacts")
+	public String showContacts(){
+		return "web/contact";
+	}
+
+	@GetMapping("/cart")
+	public String showCart(){
+		return "web/cart";
 	}
 
 }

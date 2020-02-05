@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <link th:href="@{/css/web/style.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/f4cd5455a6.js" crossorigin="anonymous"></script>
+    <title>Онлайн магазин</title>
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-default" id="nav">
+    <div class="">
+        <a href="http://localhost:8080/index" class="navbar-brand">Онлайн магазин</a>
+    </div>
+    <div class="navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="http://localhost:8080/index">Начало</a></li>
+            <li><a href="http://localhost:8080/index">Продукти</a></li>
+            <li><a href="http://localhost:8080/about">За нас</a></li>
+            <li><a href="http://localhost:8080/contacts">Контакти</a></li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://localhost:8080/cart" class="fas fa-shopping-cart">   Количка   </a></li>
+            <li><a href="/login">Вход</a></li>
+        </ul>
+    </div>
+</nav>
+<div class ="container" align="center">
+</div>
+</body>
+</html>

@@ -19,12 +19,12 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="http://localhost:8080/index">Начало</a></li>
             <li><a href="http://localhost:8080/index">Продукти</a></li>
-            <li><a href="">За нас</a></li>
-            <li><a href="">Контакти</a></li>
+            <li><a href="http://localhost:8080/about">За нас</a></li>
+            <li><a href="http://localhost:8080/contacts">Контакти</a></li>
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="" class="fas fa-shopping-cart">   Количка   </a></li>
+            <li><a href="http://localhost:8080/cart" class="fas fa-shopping-cart">   Количка   </a></li>
             <li><a href="/login">Вход</a></li>
         </ul>
     </div>
@@ -72,7 +72,7 @@
                 </section>
             </section>
             <section class="card-footer">
-                <a href="#">
+                <a th:href="@{/cart}">
                     Добави в количката
                 </a>
             </section>

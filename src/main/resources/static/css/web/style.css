@@ -89,7 +89,6 @@ main section#articles {
 
 
 
-
 /*  */
 #articles {
     display: flex;
@@ -120,6 +119,13 @@ main section#articles {
     border: none;
     border-radius: none;
     box-shadow: none;
+}
+
+#articles::after {
+    display: flex;
+    content: '';
+    order: 100;
+    flex: 0 0 30%;
 }
 
 .image-main{
