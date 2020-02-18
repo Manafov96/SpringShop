@@ -8,23 +8,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/f4cd5455a6.js" crossorigin="anonymous"></script>
-    <script>
-    /*
+    <script th:inline="javascript">
+/*
         $(document).ready(function()
         {
-           var qty = parseFloat(document.getElementById("qty").value);
-           var price = parseFloat(document.getElementById("price").value);
-           var total = parseFloat(qty * price);
-           document.getElementById("Total").innerHTML = total;
-           console.log(total);
-           console.log(qty);
-           console.log(price);
+           var table = document.getElementById("tbl");
+
+                var qty = parseFloat(table.rows[i].cells[2].value);
+                var price = parseFloat(table.rows[i].cells[3].innerHTML);
+                var total = parseFloat(qty * price);
+                var decimalTotal = total.toFixed(2);
+                table.rows[i].cells[4].innerHTML = decimalTotal;
+                console.log(qty);
+                console.log(price);
+
 
             $('#qty').change(function() {
-                $("#Total").val() = $("#qty").val() * $("#price").val();
+                var qty = parseFloat(document.getElementById("qty").value);
+                var price = parseFloat(document.getElementById("price").innerHTML);
+                var total = parseFloat(qty * price);
+                var decimalTotal = total.toFixed(2);
+                document.getElementById("Total").innerHTML = decimalTotal;
            });
 
-        });*/
+        }); */
     </script>
     <title>Онлайн магазин</title>
 </head>
@@ -50,9 +57,10 @@
 <div class ="container" align="center">
 </div>
 <div class ="container" align="center">
-    <h1>Количка</h1>
+    <h1>Количка</h1><br/>
+    <a th:unless="${#lists.isEmpty(listProducts)}" th:href="@{/index}">Продължи с пазаруването</a>
     <br/><br/>
-    <table class = "table table-striped">
+    <table th:unless="${#lists.isEmpty(listProducts)}" class = "table table-striped" id="tbl">
         <thead>
         <tr>
             <th>Код</th>
@@ -82,6 +90,8 @@
         </tr>
         </tbody>
     </table>
+    <h3 th:if="${#lists.isEmpty(listProducts)}">Все още няма добавени артикули!</h3>
+    <a th:unless="${#lists.isEmpty(listProducts)}" type ="button" class="btn btn-success" th:href="@{/order}">Завърши поръчката</a>
 </div>
 </body>
 </html>

@@ -68,5 +68,10 @@ public class LoginController {
 		return "redirect:/cart";
 	}
 
+	@GetMapping("/order")
+    public String orderInformation(){
+        return "web/order";
+    }
+
 
 }
