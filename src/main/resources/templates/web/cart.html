@@ -8,6 +8,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/f4cd5455a6.js" crossorigin="anonymous"></script>
+    <script>
+    /*
+        $(document).ready(function()
+        {
+           var qty = parseFloat(document.getElementById("qty").value);
+           var price = parseFloat(document.getElementById("price").value);
+           var total = parseFloat(qty * price);
+           document.getElementById("Total").innerHTML = total;
+           console.log(total);
+           console.log(qty);
+           console.log(price);
+
+            $('#qty').change(function() {
+                $("#Total").val() = $("#qty").val() * $("#price").val();
+           });
+
+        });*/
+    </script>
     <title>Онлайн магазин</title>
 </head>
 <body>
@@ -41,17 +59,23 @@
             <th>Артикул</th>
             <th>Количество</th>
             <th>Цена</th>
-            <th>Тотал</th>
-            <th>Опции</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${listProducts}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.brand}"></td>
-            <td th:text="${product.madein}"></td>
-            <td th:text="${product.price}"></td>
+            <td th:text="${product.id}" id="id"></td>
+            <td>
+                <img th:src="@{/upload/{url}(url=${product.image})}" width="25px" height="25px" />
+                <span th:text="${product.name}"></span>
+            </td>
+            <td>
+                <input type="number" min="1" name="quantity" th:value="1"
+                       style="text-align-last: end; background-size: cover; width: 3em"  id="qty"/>
+            </td>
+            <td
+                th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}" id="price" style="font-weight: bold">
+            </td>
             <td>&nbsp;&nbsp;&nbsp;
                 <a type="button" class="btn btn-danger" th:href="@{'/delete/' + ${product.id}}">Премахни</a>
             </td>

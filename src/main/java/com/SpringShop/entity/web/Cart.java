@@ -15,20 +15,45 @@ public class Cart implements Serializable {
 	
 	private List<Item> items;
 
+	private List<Product> products;
+
+	private Product product;
+
 	public Cart() {
         items = new ArrayList<>();
+        products = new ArrayList<>();
     }
 	
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
 	}
 
+	public void setProducts(ArrayList<Product> products){
+	    products.add(product);
+    }
+
+    public void setOneProduct(Product product){
+		products.add(product);
+	}
+
+    public Product getOneProduct(Product product){
+	    return product;
+    }
+
 	public List<Item> getItems() {
 		return items;
 	}
 
+	public List<Product> getProducts(){
+	    return products;
+    }
+
 	public int getCount() {
 		return items.size();
+	}
+
+	public void clearCartItem(Product product){
+		products.remove(product);
 	}
 	
 	public int getTotal() {

@@ -72,7 +72,7 @@
                 </section>
             </section>
             <section class="card-footer">
-                <a th:href="@{/cart}">
+                <a th:href="@{/AddToCart/{id}(id=${product.id})}">
                     Добави в количката
                 </a>
             </section>
