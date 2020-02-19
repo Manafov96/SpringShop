@@ -1,8 +1,6 @@
 package com.SpringShop.service.impl;
 
-import com.SpringShop.entity.web.Item;
-import com.SpringShop.entity.web.Order;
-import com.SpringShop.entity.web.User;
+import com.SpringShop.entity.web.*;
 import com.SpringShop.repository.OrderRepository;
 import com.SpringShop.repository.ProductRepository;
 import com.SpringShop.repository.UserRepository;
@@ -63,8 +61,8 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional
 	public void save(com.SpringShop.entity.api.Order order) {
 		// Current user
-		User currentUser = userRepository.findByEmail(order.getUser().getEmail());
-		
+		//User currentUser = userRepository.findByEmail(order.getUser().getEmail());
+		User currentUser = userRepository.findByEmail("guest@gmail.com");
 		// Set order
 		Order dbOrder = new Order();
 		dbOrder.setName(order.getName());
@@ -83,10 +81,10 @@ public class OrderServiceImpl implements OrderService {
 			item.setPrice(e.getProductPrice());
 			dbOrder.addItem(item);
 		}
-		
+
 		dbOrder = orderRepository.save(dbOrder);
 	}
-	
+
 	@Override
 	public void delete(Integer orderId) {
 		orderRepository.delete(orderId);

@@ -1,5 +1,7 @@
 package com.SpringShop.entity.api;
 
+import com.SpringShop.entity.web.Product;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class Order implements Serializable {
     private String address;
     private String note;
     private List<Item> items;
+    private List<Product> products;
     private User user;
 
     public Order() {
@@ -26,6 +29,7 @@ public class Order implements Serializable {
         this.items = items;
         this.user = user;
     }
+
 
     public String getName() {
         return name;
@@ -63,8 +67,16 @@ public class Order implements Serializable {
         return items;
     }
 
+    public List<Product> getProducts(){
+        return products;
+    }
+
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public void setProducts(List<Product> products){
+        this.products = products;
     }
 
     public User getUser() {

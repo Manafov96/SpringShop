@@ -9,29 +9,46 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/f4cd5455a6.js" crossorigin="anonymous"></script>
     <script th:inline="javascript">
-/*
+
         $(document).ready(function()
         {
-           var table = document.getElementById("tbl");
+            let count = Array.from(document.querySelectorAll('.qty'));
+            let price = Array.from(document.querySelectorAll('.price'));
+            let total = Array.from(document.querySelectorAll('.Total'));
+            count.map((x,i) => {
+                total[i].textContent = (price[i].textContent * x.value).toFixed(2);
+            })
 
-                var qty = parseFloat(table.rows[i].cells[2].value);
-                var price = parseFloat(table.rows[i].cells[3].innerHTML);
-                var total = parseFloat(qty * price);
-                var decimalTotal = total.toFixed(2);
-                table.rows[i].cells[4].innerHTML = decimalTotal;
-                console.log(qty);
-                console.log(price);
+            let a = 0;
+            total.map(x => {
+                a += +x.textContent;
+            })
+
+            document.getElementById('SubTotal').textContent = a.toFixed(2);
 
 
-            $('#qty').change(function() {
-                var qty = parseFloat(document.getElementById("qty").value);
-                var price = parseFloat(document.getElementById("price").innerHTML);
-                var total = parseFloat(qty * price);
-                var decimalTotal = total.toFixed(2);
-                document.getElementById("Total").innerHTML = decimalTotal;
-           });
+                Array.from(document.querySelectorAll('.qty')).map(x => {
+                    x.addEventListener('change', calc);
+                });
 
-        }); */
+                function calc() {
+                let count = Array.from(document.querySelectorAll('.qty'));
+                let price = Array.from(document.querySelectorAll('.price'));
+                let total = Array.from(document.querySelectorAll('.Total'));
+
+                count.map((x,i) => {
+                    total[i].textContent = (price[i].textContent * x.value).toFixed(2);
+                });
+
+                let a = 0;
+                total.map(x => {
+                    a += +x.textContent;
+                });
+
+                document.getElementById('SubTotal').textContent = a.toFixed(2);
+           }
+
+        });
     </script>
     <title>Онлайн магазин</title>
 </head>
@@ -67,6 +84,7 @@
             <th>Артикул</th>
             <th>Количество</th>
             <th>Цена</th>
+            <th>Тотал</th>
             <th></th>
         </tr>
         </thead>
@@ -79,14 +97,19 @@
             </td>
             <td>
                 <input type="number" min="1" name="quantity" th:value="1"
-                       style="text-align-last: end; background-size: cover; width: 3em"  id="qty"/>
+                       style="text-align-last: end; background-size: cover; width: 3em; margin-left: 13px;" id="quantity" class="qty"/>
             </td>
             <td
-                th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}" id="price" style="font-weight: bold">
+                th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}" class="price" style="font-weight: bold">
             </td>
+            <td class="Total" style="font-weight: bold"></td>
             <td>&nbsp;&nbsp;&nbsp;
                 <a type="button" class="btn btn-danger" th:href="@{'/delete/' + ${product.id}}">Премахни</a>
             </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align:right;"><strong>Обща сума:</strong></td>
+            <td colspan="2"><strong id="SubTotal"></strong></td>
         </tr>
         </tbody>
     </table>
