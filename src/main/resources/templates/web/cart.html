@@ -93,7 +93,7 @@
             <td th:text="${product.id}" id="id"></td>
             <td>
                 <img th:src="@{/upload/{url}(url=${product.image})}" width="25px" height="25px" />
-                <span th:text="${product.name}"></span>
+                <span th:text="${product.name}" style="vertical-align: middle;"></span>
             </td>
             <td>
                 <input type="number" min="1" name="quantity" th:value="1"
