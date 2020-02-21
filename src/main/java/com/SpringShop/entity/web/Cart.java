@@ -55,6 +55,14 @@ public class Cart implements Serializable {
 	public void clearCartItem(Product product){
 		products.remove(product);
 	}
+
+	public void clearCartOneItem(Product cartItem){
+		//cartItems.remove();
+	}
+
+	public void clearAllCartItem(){
+		products.clear();
+	}
 	
 	public int getTotal() {
 		int total = 0;

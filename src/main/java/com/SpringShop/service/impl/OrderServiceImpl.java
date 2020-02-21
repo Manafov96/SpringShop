@@ -73,12 +73,12 @@ public class OrderServiceImpl implements OrderService {
 		
 		// Set items
 		Item item;
-		for (com.SpringShop.entity.api.Item e : order.getItems()) {
+		for (Product e : order.getProducts()) {
 			item = new Item();
 			item.setOrder(dbOrder);
-			item.setProduct(productRepository.findOne(e.getProductId()));
-			item.setQuantity(e.getQuantity());
-			item.setPrice(e.getProductPrice());
+			item.setProduct(productRepository.findOne(e.getId()));
+			item.setQuantity(1); //Must change to real quantity
+			item.setPrice(e.getPrice());
 			dbOrder.addItem(item);
 		}
 

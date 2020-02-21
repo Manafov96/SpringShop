@@ -15,6 +15,7 @@
 <div class="container">
     <form class="form-horizontal" role="form" method="POST" th:object="${order}"
           th:action="@{order/save}">
+        <input type="hidden" th:field="*{items}" />
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -65,7 +66,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon" style="width: 2.6rem">
                         </div>
-                        <input required="required" type="text"  class="form-control" th:field="*{phone}"
+                        <input required="required" type="tel" pattern="[0-9]{10}" class="form-control" th:field="*{phone}"
                                 placeholder="Телефон" />
                     </div>
                 </div>
