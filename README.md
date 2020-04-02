@@ -1,5 +1,7 @@
 # Online shop example with Java Spring MVC.
 
+
+
 ![Main page](pic/index.jpg)
 ![Cart pages](pic/cart.jpg)
 ![Cart items page](pic/cartItems.jpg)
