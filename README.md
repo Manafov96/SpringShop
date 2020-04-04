@@ -17,5 +17,5 @@
 ![Admin new product page](pic/adminNewProduct.jpg)
 ![Admin Clients page](pic/adminClients.jpg)
 ![Admin client options page](pic/adminClientOptions.jpg)
-![Admin order page](pic/AdminOrders.jpg)
+![Admin order page](pic/adminOrders.jpg)
 ![Admin order details page](pic/adminOrderDetails.jpg)
